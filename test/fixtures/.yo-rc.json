@@ -1,0 +1,18 @@
+{
+  "generator-angular-material-fullstack": {
+    "insertRoutes": "true",
+    "registerRoutesFile": "server/routes.js",
+    "routesNeedle": "// Insert routes below",
+    "insertSockets": "true",
+    "registerSocketsFile": "server/config/socketio.js",
+    "socketsNeedle": "// Insert sockets below",
+    "filters": {
+      "coffee": true,
+      "html": true,
+      "uirouter": true,
+      "socketio": true,
+      "mongoose": true,
+      "auth": true
+    }
+  }
+}

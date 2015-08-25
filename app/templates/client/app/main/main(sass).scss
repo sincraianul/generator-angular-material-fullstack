@@ -1,0 +1,89 @@
+.things-list {
+ margin: 8px;
+}
+
+.things-list md-grid-tile {
+ transition: all 400ms ease-out 50ms;
+}
+
+.things-list .avatar-icon {
+  width: 50%;
+  height: 50%; }
+
+.things-list .avatar-icon svg {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%; }
+
+.things-list .s64 {
+  font-size: 64px; }
+
+.things-list .s32 {
+  font-size: 48px; }
+
+.things-list .avatar-icon.fa {
+  display: block;
+  padding-left: 0; }
+
+.things-list .avatar-icon.s32 span {
+  padding-left: 8px; }
+
+.things-list md-grid-list {
+  margin: 8px; }
+
+.things-list .gray {
+  background: #f5f5f5; }
+
+.things-list .green {
+  background: #b9f6ca; }
+
+.things-list .yellow {
+  background: #ffff8d; }
+
+.things-list .blue {
+  background: #84ffff; }
+
+.things-list .darkBlue {
+  background: #80d8ff; }
+
+.things-list .deepBlue {
+  background: #448aff; }
+
+.things-list .purple {
+  background: #b388ff; }
+
+.things-list .lightPurple {
+  background: #8c9eff; }
+
+.things-list .red {
+  background: #ff8a80; }
+
+.things-list .pink {
+  background: #ff80ab; }
+
+.things-list md-grid-tile .avatar-icon {
+  padding-bottom: 32px; }
+
+.things-list md-grid-tile md-grid-tile-footer {
+  background: rgba(0, 0, 0, 0.68);
+  height: 48px; }
+
+.things-list md-grid-tile-footer figcaption {
+  width: 100%; }
+
+.things-list md-grid-tile-footer figcaption h3 {
+  margin: 0;
+  font-weight: 700;
+  text-align: left;
+  margin-left: 16px;
+  margin-right: 64px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
+.things-list .delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}

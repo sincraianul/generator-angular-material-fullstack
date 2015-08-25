@@ -1,0 +1,71 @@
+div(ng-controller='ShellCtrl')
+  md-sidenav.md-sidenav-left.md-whiteframe-z2(md-component-id='left')
+    md-toolbar.md-tall.md-accent
+      h2.md-toolbar-tools
+        span Toolbar: tall (md-accent)
+    md-content(layout-padding='')
+  md-toolbar
+    .md-toolbar-tools
+      md-button.md-icon-button(ng-click='toggleLeft()', aria-label='Settings')
+        md-icon(md-svg-icon='navigation:menu')
+      h2
+        span
+      span(flex='')
+      md-menu
+        md-button.md-icon-button(aria-label='Open phone interactions menu', ng-click='openMenu($mdOpenMenu, $event)')
+          md-icon(md-menu-origin='', md-svg-icon='navigation:more_vert')
+        md-menu-content(width='4')
+          md-menu-item
+            md-button(ng-click='showAddDialog($event)')
+              md-icon(md-svg-icon='content:add', md-menu-align-target='')
+              |               Add
+          md-menu-item
+            md-button(ng-click='redial($event)')
+              md-icon(md-svg-icon='communication:dialpad', md-menu-align-target='')
+              |               Redial
+          md-menu-item
+            md-button(disabled='disabled', ng-click='checkVoicemail()')
+              md-icon(md-svg-icon='communication:voicemail')
+              |               Check voicemail
+          md-menu-divider
+          md-menu-item
+            md-button(ng-click='toggleNotifications()')
+              md-icon(md-svg-icon="social:notifications{{notificationsEnabled ? '_off' : ''}}")
+              |               {{notificationsEnabled ? 'Disable' : 'Enable' }} notifications
+
+
+
+//- div.navbar.navbar-default.navbar-static-top(ng-controller='NavbarCtrl')
+//-   div.container
+//-     div.navbar-header
+//-       button.navbar-toggle(type='button', ng-click='isCollapsed = !isCollapsed')
+//-         span.sr-only Toggle navigation
+//-         span.icon-bar
+//-         span.icon-bar
+//-         span.icon-bar
+//-       a.navbar-brand(href='/') <%= _.slugify(_.humanize(appname)) %>
+//- 
+//-     div#navbar-main.navbar-collapse.collapse(collapse='isCollapsed')
+//-       ul.nav.navbar-nav
+//-         li(ng-repeat='item in menu', ng-class='{active: isActive(item.link)}')
+//-           a(ng-href='{{item.link}}') {{item.title}}<% if(filters.auth) { %>
+//- 
+//-         li(ng-show='isAdmin()', ng-class='{active: isActive("/admin")}')
+//-           a(href='/admin') Admin<% } %><% if(filters.auth) { %>
+//- 
+//-       ul.nav.navbar-nav.navbar-right
+//-         li(ng-hide='isLoggedIn()', ng-class='{active: isActive("/signup")}')
+//-           a(href='/signup') Sign up
+//- 
+//-         li(ng-hide='isLoggedIn()', ng-class='{active: isActive("/login")}')
+//-           a(href='/login') Login
+//- 
+//-         li(ng-show='isLoggedIn()')
+//-           p.navbar-text Hello {{ getCurrentUser().name }}
+//- 
+//-         li(ng-show='isLoggedIn()', ng-class='{active: isActive("/settings")}')
+//-           a(href='/settings')
+//-             span.glyphicon.glyphicon-cog
+//- 
+//-         li(ng-show='isLoggedIn()', ng-class='{active: isActive("/logout")}')
+//-           a(href='', ng-click='logout()') Logout<% } %>
