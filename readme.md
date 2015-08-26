@@ -1,5 +1,5 @@
 # AngularJS Material Full-Stack generator
-[![Build Status](https://travis-ci.org/sincraianul/generator-angular-material-fullstack.svg?branch=master)](https://travis-ci.org/sincraianul/generator-angular-material-fullstack) [![npm version](https://badge.fury.io/js/generator-angular-material-fullstack.svg)](http://badge.fury.io/js/generator-angular-material-fullstack)
+[![Build Status](https://travis-ci.org/sincraianul/generator-angular-material-fullstack.svg)](https://travis-ci.org/sincraianul/generator-angular-material-fullstack) [![npm version](https://badge.fury.io/js/generator-angular-material-fullstack.svg)](http://badge.fury.io/js/generator-angular-material-fullstack)
 
 > Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS with Angular Material, and Node - lets you quickly set up a project following best practices.
 
