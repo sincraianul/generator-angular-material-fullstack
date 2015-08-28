@@ -1,14 +1,26 @@
 'use strict';
-var fs = require('fs');
-var path = require('path');
-var util = require('util');
-var genUtils = require('../util.js');
-var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var wiredep = require('wiredep');
 
+/**
+ * The core of our generator
+ */
+
+var fs        = require('fs')
+  , path      = require('path')
+  , util      = require('util')
+  , genUtils  = require('../util.js')
+  , yeoman    = require('yeoman-generator')
+  , chalk     = require('chalk')
+  , wiredep   = require('wiredep');
+
+
+/**
+ * Our generator will extend Yeoman's base generator
+ */
 var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
 
+  /**
+   * Initialize variables and global settings
+   */
   init: function () {
     this.argument('name', { type: String, required: false });
     this.appname = this.name || path.basename(process.cwd());
@@ -26,15 +38,21 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
     this.filters = {};
   },
 
+  /**
+   * Output the Yeoman logo and the description of our generator
+   */
   info: function () {
     this.log(this.yeoman);
-    this.log('Out of the box I create an AngularJS app with an Express server.\n');
+    this.log('Out of the box I create an Angular app with Angular Material and an Express server.\n');
   },
 
+  /**
+   * Check for existing Yeoman configs
+   */
   checkForConfig: function() {
     var cb = this.async();
 
-    if(this.config.get('filters')) {
+    if (this.config.get('filters')) {
       this.prompt([{
         type: "confirm",
         name: "skipConfig",
@@ -43,13 +61,12 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
       }], function (answers) {
         this.skipConfig = answers.skipConfig;
 
-        // NOTE: temp(?) fix for #403
-        if(typeof this.oauth==='undefined') {
+        if (typeof this.oauth === 'undefined') {
           var strategies = Object.keys(this.filters).filter(function(key) {
             return key.match(/Auth$/) && key;
           });
 
-          if(strategies.length) this.config.set('oauth', true);
+          if (strategies.length) this.config.set('oauth', true);
         }
 
         cb();
@@ -59,6 +76,9 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
     }
   },
 
+  /**
+   * Prompts for technologies to use in the front-end
+   */
   clientPrompts: function() {
     if(this.skipConfig) return;
     var cb = this.async();
@@ -118,6 +138,9 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
       }.bind(this));
   },
 
+  /**
+   * Prompts for technologies to use in the back-end
+   */
   serverPrompts: function() {
     if(this.skipConfig) return;
     var cb = this.async();
@@ -184,6 +207,9 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  /**
+   * Set some global configurations
+   */
   saveSettings: function() {
     if(this.skipConfig) return;
     this.config.set('insertRoutes', true);
@@ -230,6 +256,9 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
     }, { local: require.resolve('generator-ng-component/app/index.js') });
   },
 
+  /**
+   * Stringify the angular modules used in the app
+   */
   ngModules: function() {
     this.filters = this._.defaults(this.config.get('filters'), {
       material: true
@@ -251,11 +280,17 @@ var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
     this.angularModules = "\n  " + angModules.join(",\n  ") +"\n";
   },
 
+  /**
+   * Process all the files
+   */
   generate: function() {
     this.sourceRoot(path.join(__dirname, './templates'));
     genUtils.processDirectory(this, '.', '.');
   },
 
+  /**
+   * Install dependencies
+   */
   end: function() {
     this.installDependencies({
       skipInstall: this.options['skip-install']

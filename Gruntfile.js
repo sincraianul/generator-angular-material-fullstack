@@ -42,7 +42,7 @@ module.exports = function (grunt) {
         commit: true,
         push: true,
         connectCommits: false,
-        message: 'Built using Angular Fullstack v<%= pkg.version %> from commit %sourceCommit%'
+        message: 'Built using Angular Material Fullstack v<%= pkg.version %> from commit %sourceCommit%'
       },
       release: {
         options: {
