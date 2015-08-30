@@ -1,0 +1,16 @@
+md-dialog(aria-label='List dialog')
+  md-dialog-content
+    h2.md-title
+      | Set a description for the new thing
+    form(name='projectForm')
+      md-input-container
+        label Description
+        input(md-maxlength='30', required='', name='description', ng-model='newThing')
+        div(ng-messages='projectForm.description.$error')
+          div(ng-message='required') This is required.
+          div(ng-message='md-maxlength') The name has to be less than 30 characters long.
+  .md-actions
+    md-button.md-primary(ng-click='closeDialog()')
+      | Cancel
+    md-button.md-primary(ng-click='addThing()')
+      | Save
