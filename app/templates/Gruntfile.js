@@ -252,7 +252,7 @@ module.exports = function (grunt) {
       target: {
         src: '<%%= yeoman.client %>/index.html',
         ignorePath: '<%%= yeoman.client %>/',
-        exclude: [/angular-material/, '/json3/', '/es5-shim/']
+        exclude: ['/json3/', '/es5-shim/']
       }
     },
 
