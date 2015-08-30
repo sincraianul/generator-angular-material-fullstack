@@ -129,7 +129,9 @@ module.exports = function (grunt) {
           <% } %>
           '!{.tmp,<%%= yeoman.client %>}{app,components}/**/*.spec.js',
           '!{.tmp,<%%= yeoman.client %>}/{app,components}/**/*.mock.js',
-          '<%%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%%= yeoman.client %>/assets/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%%= yeoman.client %>/assets/icons/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+          '<%%= yeoman.client %>/assets/iconsets/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
         options: {
           livereload: true
@@ -264,6 +266,8 @@ module.exports = function (grunt) {
             '<%%= yeoman.dist %>/public/{,*/}*.js',
             '<%%= yeoman.dist %>/public/{,*/}*.css',
             '<%%= yeoman.dist %>/public/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%%= yeoman.dist %>/public/assets/icons/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%%= yeoman.dist %>/public/assets/iconsets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%%= yeoman.dist %>/public/assets/fonts/*'
           ]
         }
@@ -288,12 +292,16 @@ module.exports = function (grunt) {
       options: {
         assetsDirs: [
           '<%%= yeoman.dist %>/public',
-          '<%%= yeoman.dist %>/public/assets/images'
+          '<%%= yeoman.dist %>/public/assets/images',
+          '<%%= yeoman.dist %>/public/assets/icons',
+          '<%%= yeoman.dist %>/public/assets/iconsets'
         ],
         // This is so we update image references in our ng-templates
         patterns: {
           js: [
-            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+            [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images'],
+            [/(assets\/icons\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved icons'],
+            [/(assets\/iconsets\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved iconsets']
           ]
         }
       }
@@ -318,6 +326,16 @@ module.exports = function (grunt) {
           cwd: '<%%= yeoman.client %>/assets/images',
           src: '{,*/}*.svg',
           dest: '<%%= yeoman.dist %>/public/assets/images'
+        },{
+          expand: true,
+          cwd: '<%%= yeoman.client %>/assets/icons',
+          src: '{,*/}*.svg',
+          dest: '<%%= yeoman.dist %>/public/assets/icons'
+        },{
+          expand: true,
+          cwd: '<%%= yeoman.client %>/assets/iconsets',
+          src: '{,*/}*.svg',
+          dest: '<%%= yeoman.dist %>/public/assets/iconsets'
         }]
       }
     },
