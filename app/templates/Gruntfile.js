@@ -326,16 +326,6 @@ module.exports = function (grunt) {
           cwd: '<%%= yeoman.client %>/assets/images',
           src: '{,*/}*.svg',
           dest: '<%%= yeoman.dist %>/public/assets/images'
-        },{
-          expand: true,
-          cwd: '<%%= yeoman.client %>/assets/icons',
-          src: '{,*/}*.svg',
-          dest: '<%%= yeoman.dist %>/public/assets/icons'
-        },{
-          expand: true,
-          cwd: '<%%= yeoman.client %>/assets/iconsets',
-          src: '{,*/}*.svg',
-          dest: '<%%= yeoman.dist %>/public/assets/iconsets'
         }]
       }
     },
