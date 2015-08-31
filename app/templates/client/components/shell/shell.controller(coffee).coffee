@@ -49,6 +49,6 @@ angular.module '<%= scriptAppName %>'
     $mdDialog.show
       parent: parentEl
       targetEvent: $event
-      template: 'components/shell/dialog/dialog.html'
+      templateUrl: 'components/shell/dialog/dialog.html'
       controller: DialogController
     return
