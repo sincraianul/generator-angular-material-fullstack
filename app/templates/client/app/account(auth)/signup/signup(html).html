@@ -1,4 +1,40 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<md-content class="md-padding">
+    <md-card class="register-card">
+      <md-card-content>
+        <h2 class="md-title">Sign up</h2>
+        <form name="form" ng-submit="register(form)" novalidate>
+          <md-input-container>
+            <label>Name</label>
+            <input required name="name" ng-model="user.name">
+            <div ng-messages="form.name.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Email</label>
+            <input required name="email" type="email" ng-model="user.email">
+            <div ng-messages="form.email.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input required type="password" name="password" ng-model="user.password">
+            <div ng-messages="form.password.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <div layout="row">
+            <md-button class="md-primary" type="submit">Sign up</md-button>
+            <md-button flex type="submit" href="/signup">Login</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+    <div class="love-message">Generated with <md-icon md-svg-icon="action:favorite" class="md-warn"></md-icon> by <a href="https://github.com/sincraianul/generator-angular-material-fullstack">generator-angular-material-fullstack</a>.</div>
+</md-content>
+
+<!-- <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
   <div class="row">
@@ -79,4 +115,4 @@
     </div>
   </div>
   <hr>
-</div>
+</div> -->

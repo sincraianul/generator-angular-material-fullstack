@@ -1,6 +1,37 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
+<md-content class="md-padding">
+    <md-card class="login-card">
+      <md-card-content>
+        <h2 class="md-title">Login</h2>
+        <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
+        <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
 
-<div class="container">
+        <form name="form" ng-submit="login(form)" novalidate>
+          <md-input-container>
+            <label>Email</label>
+            <input required type="email" name="email" ng-model="user.email">
+            <div ng-messages="form.email.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container>
+            <label>Password</label>
+            <input required type="password" name="password" ng-model="user.password">
+            <div ng-messages="form.password.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <div layout="row">
+            <md-button class="md-primary" type="submit">Login</md-button>
+            <md-button flex type="submit" href="/signup">Register</md-button>
+          </div>
+        </form>
+      </md-card-content>
+    </md-card>
+    <div class="love-message">Generated with <md-icon md-svg-icon="action:favorite" class="md-warn"></md-icon> by <a href="https://github.com/sincraianul/generator-angular-material-fullstack">generator-angular-material-fullstack</a>.</div>
+</md-content>
+
+
+<!-- <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Login</h1>
@@ -58,4 +89,4 @@
     </div>
   </div>
   <hr>
-</div>
+</div> -->

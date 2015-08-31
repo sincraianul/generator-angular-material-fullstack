@@ -3,41 +3,9 @@ div(ng-include='"components/shell/shell.html"')
 md-grid-list.things-list(md-cols-sm='1', md-cols-md='2', md-cols-gt-md='5', md-row-height-gt-md='1:1', md-row-height='4:3', md-gutter='8px', md-gutter-gt-sm='4px')
   md-grid-tile(ng-repeat='thing in awesomeThings', ng-class='getColor($index)', md-rowspan='{{getSpan($index)}}', md-colspan='{{getSpan($index)}}', md-colspan-sm='1')
     <% if(filters.socketio) { %>
-    md-button.md-icon-button.delete-btn(ng-click='deleteThing(thing)')
+    md-button.md-icon-button.delete-btn(ng-click='deleteThing(thing)', aria-label='Remove item')
       md-icon(style='fill: #fff', md-svg-icon='action:delete')
     <% } %>
     md-icon.avatar-icon(md-svg-icon='avatar:svg-{{ ($index + 1) % 11 }}')
     md-grid-tile-footer
       h3 {{thing.name}}
-
-//- header#banner.hero-unit
-//-   .container
-//-     h1 'Allo, 'Allo!
-//-     p.lead Kick-start your next web app with Angular Fullstack
-//-     img(src='assets/images/yeoman.png', alt='I\'m Yeoman')
-//- 
-//- .container
-//-   .row
-//-     .col-lg-12
-//-       h1.page-header Features:
-//-       ul.nav.nav-tabs.nav-stacked.col-md-4.col-lg-4.col-sm-6(ng-repeat='thing in awesomeThings')
-//-         li
-//-           a(href='#', tooltip='{{thing.info}}')
-//-             | {{thing.name}}<% if(filters.socketio) { %>
-//-             button.close(type='button', ng-click='deleteThing(thing)') ×<% } %><% if(filters.socketio) { %>
-//- 
-//-   form.thing-form
-//-     label Syncs in realtime across clients
-//-     p.input-group
-//-       input.form-control(type='text', placeholder='Add a new thing here.', ng-model='newThing')
-//-       span.input-group-btn
-//-         button.btn.btn-primary(type='submit', ng-click='addThing()') Add New<% } %>
-//- 
-//- footer.footer
-//-   .container
-//-     p
-//-       | Angular Fullstack v<%= pkg.version %>
-//-       = ' | '
-//-       a(href='https://twitter.com/tyhenkel') @tyhenkel
-//-       = ' | '
-//-       a(href='https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open') Issues

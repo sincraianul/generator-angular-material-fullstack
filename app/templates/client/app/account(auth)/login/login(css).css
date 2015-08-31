@@ -1,3 +1,14 @@
+.login-card, .register-card {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.love-message {
+  margin-top: 64px;
+  text-align: center;
+}
+/*
+
 <% if (filters.oauth) { %><% if (filters.facebookAuth) { %>.btn-facebook {
   color: #fff;
   background-color: #3B5998;
@@ -20,4 +31,4 @@
   color: #fff;
   background-color: #fafafa;
   border-color: #ccc;
-}<% } %>
+}<% } %>*/

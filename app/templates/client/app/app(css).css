@@ -2,6 +2,15 @@
  * App-wide Styles
  */
 
+ .main-shell .profile-container {
+   height: 100%;
+   font-size: 14px;
+ }
+
+ .main-shell .profile-container .profile-name {
+   font-weight: 500;
+ }
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
