@@ -1,20 +1,12 @@
 'use strict';
 
 angular.module('<%= scriptAppName %>')
-  .controller('MainCtrl', function ($scope, $http<% if(filters.socketio) { %>, socket, $mdToast<% } %>) {
+  .controller('MainCtrl', function ($scope, $http<% if(filters.socketio) { %>, socket<% } %>) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
       $scope.awesomeThings = awesomeThings;<% if(filters.socketio) { %>
-      socket.syncUpdates('thing', $scope.awesomeThings, function(ev) {
-        var toast = $mdToast.simple()
-          .content('One item ' + ev)
-          .action('OK')
-          .highlightAction(false)
-          .position('bottom right');
-
-        //  $mdToast.show(toast);
-      });<% } %>
+      socket.syncUpdates('thing', $scope.awesomeThings);<% } %>
     });
 
     $scope.getColor = function($index) {

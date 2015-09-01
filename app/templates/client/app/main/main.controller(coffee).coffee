@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module '<%= scriptAppName %>'
-.controller 'MainCtrl', ($scope, $http<% if(filters.socketio) { %>, socket, $mdToast<% } %>) ->
+.controller 'MainCtrl', ($scope, $http<% if(filters.socketio) { %>, socket<% } %>) ->
   $scope.awesomeThings = []
 
   $scope.getColor = ($index) ->
@@ -42,9 +42,7 @@ angular.module '<%= scriptAppName %>'
   $http.get('/api/things').success (awesomeThings) ->
     $scope.awesomeThings = awesomeThings
     <% if(filters.socketio) { %>
-    socket.syncUpdates 'thing', $scope.awesomeThings, (ev) ->
-      toast = $mdToast.simple().content('One item ' + ev).action('OK').highlightAction(false).position('bottom right')
-      # $mdToast.show toast
+    socket.syncUpdates 'thing', $scope.awesomeThings
    <% } %>
 <% if(filters.mongoose) { %>
   $scope.addThing = ->
