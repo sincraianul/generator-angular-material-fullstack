@@ -44,7 +44,7 @@ angular.module '<%= scriptAppName %>'
     <% if(filters.socketio) { %>
     socket.syncUpdates 'thing', $scope.awesomeThings, (ev) ->
       toast = $mdToast.simple().content('One item ' + ev).action('OK').highlightAction(false).position('bottom right')
-      $mdToast.show toast
+      # $mdToast.show toast
    <% } %>
 <% if(filters.mongoose) { %>
   $scope.addThing = ->

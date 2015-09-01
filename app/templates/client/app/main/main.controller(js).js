@@ -13,7 +13,7 @@ angular.module('<%= scriptAppName %>')
           .highlightAction(false)
           .position('bottom right');
 
-         $mdToast.show(toast);
+        //  $mdToast.show(toast);
       });<% } %>
     });
 
