@@ -8,3 +8,4 @@ release.txt
 fixtures/bower.json
 fixtures/package.json
 .log
+npm-debug.log
