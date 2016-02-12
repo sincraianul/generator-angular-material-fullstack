@@ -5,7 +5,7 @@ var _s = require('underscore.string');
 var shell = require('shelljs');
 var process = require('child_process');
 var Q = require('q');
-var helpers = require('yeoman-generator').test;
+var helpers = require('yeoman-test');
 var fs = require('fs-extra');
 var path = require('path');
 
@@ -119,16 +119,6 @@ module.exports = function (grunt) {
     shell.mkdir(grunt.config('config').demo);
     shell.cd(grunt.config('config').demo);
 
-    Q()
-      .then(generateDemo)
-      .then(function() {
-        shell.cd('../');
-      })
-      .catch(function(msg){
-        grunt.fail.warn(msg || 'failed to generate demo')
-      })
-      .finally(done);
-
     function generateDemo() {
       var deferred = Q.defer();
       var options = {
@@ -160,23 +150,22 @@ module.exports = function (grunt) {
 
       return deferred.promise;
     }
+
+    new Q()
+      .then(generateDemo)
+      .then(function() {
+        shell.cd('../');
+      })
+      .catch(function(msg){
+        grunt.fail.warn(msg || 'failed to generate demo');
+      })
+      .finally(done);
   });
 
   grunt.registerTask('releaseDemoBuild', 'builds and releases demo', function () {
     var done = this.async();
 
     shell.cd(grunt.config('config').demo);
-
-    Q()
-      .then(gruntBuild)
-      .then(gruntRelease)
-      .then(function() {
-        shell.cd('../');
-      })
-      .catch(function(msg){
-        grunt.fail.warn(msg || 'failed to release demo')
-      })
-      .finally(done);
 
     function run(cmd) {
       var deferred = Q.defer();
@@ -198,6 +187,17 @@ module.exports = function (grunt) {
     function gruntRelease() {
       return run('grunt buildcontrol:heroku');
     }
+
+    new Q()
+      .then(gruntBuild)
+      .then(gruntRelease)
+      .then(function() {
+        shell.cd('../');
+      })
+      .catch(function(msg){
+        grunt.fail.warn(msg || 'failed to release demo');
+      })
+      .finally(done);
   });
 
   grunt.registerTask('updateFixtures', 'updates package and bower fixtures', function() {
@@ -232,7 +232,7 @@ module.exports = function (grunt) {
       process.exec('bower install', {cwd: '../fixtures'}, function (error, stdout, stderr) {
         shell.cd('../../');
         done();
-      })
+      });
     });
   });
 

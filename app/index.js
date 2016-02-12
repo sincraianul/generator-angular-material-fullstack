@@ -16,7 +16,7 @@ var fs        = require('fs')
 /**
  * Our generator will extend Yeoman's base generator
  */
-var AngularMaterialFullstackGenerator = yeoman.generators.Base.extend({
+var AngularMaterialFullstackGenerator = yeoman.Base.extend({
 
   /**
    * Initialize variables and global settings

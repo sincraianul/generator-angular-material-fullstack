@@ -6,7 +6,7 @@ var chalk = require('chalk');
 var path = require('path');
 
 var Generator = module.exports = function Generator() {
-  yeoman.generators.Base.apply(this, arguments);
+  yeoman.Base.apply(this, arguments);
   this.sourceRoot(path.join(__dirname, './templates'));
 
   try {

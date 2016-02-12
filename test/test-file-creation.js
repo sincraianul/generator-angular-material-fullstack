@@ -1,7 +1,7 @@
 /*global describe, beforeEach, it */
 'use strict';
 var path = require('path');
-var helpers = require('yeoman-generator').test;
+var helpers = require('yeoman-test');
 var chai = require('chai');
 var expect = chai.expect;
 var fs = require('fs-extra');
